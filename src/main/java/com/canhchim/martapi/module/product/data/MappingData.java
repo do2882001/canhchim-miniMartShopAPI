@@ -1,7 +1,9 @@
 package com.canhchim.martapi.module.product.data;
 
 import com.canhchim.martapi.entity.ProductType;
+import com.canhchim.martapi.entity.Productinputdetail;
 import com.canhchim.martapi.module.product.data.requestDTO.ProductTypeDto;
+import com.canhchim.martapi.module.product.data.requestDTO.ProductinputdetailDto;
 import com.canhchim.martapi.module.product.repositories.ProductTypeRepository;
 import com.canhchim.martapi.module.product.repositories.ShopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,5 +31,16 @@ public class MappingData {
         p.setProductTypeCode(productType.getProductTypeCode());
         p.setShopId(productType.getShopId().getId());
         return p;
+    }
+
+    public Productinputdetail mappingProductInputDetailDTOToEntity(ProductinputdetailDto dto){
+        Productinputdetail productinputdetail = new Productinputdetail();
+
+        productinputdetail.setId(dto.getId());
+        productinputdetail.setProductcost(dto.getProductcost());
+        productinputdetail.setProductofnumber(dto.getProductofnumber());
+        productinputdetail.setProductid();
+
+        return null;
     }
 }

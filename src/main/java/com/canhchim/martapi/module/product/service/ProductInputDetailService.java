@@ -12,5 +12,4 @@ public class ProductInputDetailService {
     ProductinputdetailRepository productinputdetailRepository;
 
 
-
 }
