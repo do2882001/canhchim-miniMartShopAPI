@@ -4,57 +4,61 @@ import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Shops")
+@Table(name = "shop")
 public class Shop {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ShopId", nullable = false)
+    @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "ShopName", nullable = false, length = 50)
-    private String shopName;
+    @Column(name = "name", nullable = false, length = 50)
+    private String name;
 
-    @Column(name = "ShopAddressGPSLongtitude")
-    private Double shopAddressGPSLongtitude;
+    @Column(name = "address_gps_longtitude")
+    private Double addressGpsLongtitude;
 
-    @Column(name = "ShopAddressGPSlatitude")
-    private Double shopAddressGPSlatitude;
+    @Column(name = "address_gps_latitude")
+    private Double addressGpsLatitude;
 
-    @Column(name = "ShopAddressNational", length = 100)
-    private String shopAddressNational;
+    @Column(name = "address_national", length = 100)
+    private String addressNational;
 
-    @Column(name = "ShopAddressProvinceCity", length = 100)
-    private String shopAddressProvinceCity;
+    @Column(name = "address_province_city", length = 100)
+    private String addressProvinceCity;
 
-    @Column(name = "ShopAddressDistrict", length = 100)
-    private String shopAddressDistrict;
+    @Column(name = "address_district", length = 100)
+    private String addressDistrict;
 
-    @Column(name = "ShopAddressWards", length = 100)
-    private String shopAddressWards;
+    @Column(name = "address_wards", length = 100)
+    private String addressWards;
 
-    @Column(name = "ShopAddressStreet", nullable = false, length = 50)
-    private String shopAddressStreet;
+    @Column(name = "address_street", nullable = false, length = 50)
+    private String addressStreet;
 
-    @Column(name = "ShopAddressNationalCode", length = 50)
-    private String shopAddressNationalCode;
+    @Column(name = "address_national_code", length = 50)
+    private String addressNationalCode;
 
-    @Column(name = "ShopAddressFull", nullable = false, length = 50)
-    private String shopAddressFull;
+    @Column(name = "address_full", nullable = false, length = 50)
+    private String addressFull;
 
-    @Column(name = "DateTime1")
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
+    @Column(name = "date_time_1")
     private Instant dateTime1;
 
-    @Column(name = "DateTime2")
+    @Column(name = "date_time_2")
     private Instant dateTime2;
 
-    @Column(name = "ShopRSAPrivate", length = 512)
-    private String shopRSAPrivate;
+    @Column(name = "rsa_private", length = 512)
+    private String rsaPrivate;
 
-    @Column(name = "ShopSRAPublic", length = 1024)
-    private String shopSRAPublic;
+    @Column(name = "sra_public", length = 1024)
+    private String sraPublic;
 
-    @Column(name = "ShopKeySalt", length = 12)
-    private String shopKeySalt;
+    @Column(name = "key_salt", length = 12)
+    private String keySalt;
 
     public Integer getId() {
         return id;
@@ -64,84 +68,92 @@ public class Shop {
         this.id = id;
     }
 
-    public String getShopName() {
-        return shopName;
+    public String getName() {
+        return name;
     }
 
-    public void setShopName(String shopName) {
-        this.shopName = shopName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Double getShopAddressGPSLongtitude() {
-        return shopAddressGPSLongtitude;
+    public Double getAddressGpsLongtitude() {
+        return addressGpsLongtitude;
     }
 
-    public void setShopAddressGPSLongtitude(Double shopAddressGPSLongtitude) {
-        this.shopAddressGPSLongtitude = shopAddressGPSLongtitude;
+    public void setAddressGpsLongtitude(Double addressGpsLongtitude) {
+        this.addressGpsLongtitude = addressGpsLongtitude;
     }
 
-    public Double getShopAddressGPSlatitude() {
-        return shopAddressGPSlatitude;
+    public Double getAddressGpsLatitude() {
+        return addressGpsLatitude;
     }
 
-    public void setShopAddressGPSlatitude(Double shopAddressGPSlatitude) {
-        this.shopAddressGPSlatitude = shopAddressGPSlatitude;
+    public void setAddressGpsLatitude(Double addressGpsLatitude) {
+        this.addressGpsLatitude = addressGpsLatitude;
     }
 
-    public String getShopAddressNational() {
-        return shopAddressNational;
+    public String getAddressNational() {
+        return addressNational;
     }
 
-    public void setShopAddressNational(String shopAddressNational) {
-        this.shopAddressNational = shopAddressNational;
+    public void setAddressNational(String addressNational) {
+        this.addressNational = addressNational;
     }
 
-    public String getShopAddressProvinceCity() {
-        return shopAddressProvinceCity;
+    public String getAddressProvinceCity() {
+        return addressProvinceCity;
     }
 
-    public void setShopAddressProvinceCity(String shopAddressProvinceCity) {
-        this.shopAddressProvinceCity = shopAddressProvinceCity;
+    public void setAddressProvinceCity(String addressProvinceCity) {
+        this.addressProvinceCity = addressProvinceCity;
     }
 
-    public String getShopAddressDistrict() {
-        return shopAddressDistrict;
+    public String getAddressDistrict() {
+        return addressDistrict;
     }
 
-    public void setShopAddressDistrict(String shopAddressDistrict) {
-        this.shopAddressDistrict = shopAddressDistrict;
+    public void setAddressDistrict(String addressDistrict) {
+        this.addressDistrict = addressDistrict;
     }
 
-    public String getShopAddressWards() {
-        return shopAddressWards;
+    public String getAddressWards() {
+        return addressWards;
     }
 
-    public void setShopAddressWards(String shopAddressWards) {
-        this.shopAddressWards = shopAddressWards;
+    public void setAddressWards(String addressWards) {
+        this.addressWards = addressWards;
     }
 
-    public String getShopAddressStreet() {
-        return shopAddressStreet;
+    public String getAddressStreet() {
+        return addressStreet;
     }
 
-    public void setShopAddressStreet(String shopAddressStreet) {
-        this.shopAddressStreet = shopAddressStreet;
+    public void setAddressStreet(String addressStreet) {
+        this.addressStreet = addressStreet;
     }
 
-    public String getShopAddressNationalCode() {
-        return shopAddressNationalCode;
+    public String getAddressNationalCode() {
+        return addressNationalCode;
     }
 
-    public void setShopAddressNationalCode(String shopAddressNationalCode) {
-        this.shopAddressNationalCode = shopAddressNationalCode;
+    public void setAddressNationalCode(String addressNationalCode) {
+        this.addressNationalCode = addressNationalCode;
     }
 
-    public String getShopAddressFull() {
-        return shopAddressFull;
+    public String getAddressFull() {
+        return addressFull;
     }
 
-    public void setShopAddressFull(String shopAddressFull) {
-        this.shopAddressFull = shopAddressFull;
+    public void setAddressFull(String addressFull) {
+        this.addressFull = addressFull;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Instant getDateTime1() {
@@ -160,28 +172,28 @@ public class Shop {
         this.dateTime2 = dateTime2;
     }
 
-    public String getShopRSAPrivate() {
-        return shopRSAPrivate;
+    public String getRsaPrivate() {
+        return rsaPrivate;
     }
 
-    public void setShopRSAPrivate(String shopRSAPrivate) {
-        this.shopRSAPrivate = shopRSAPrivate;
+    public void setRsaPrivate(String rsaPrivate) {
+        this.rsaPrivate = rsaPrivate;
     }
 
-    public String getShopSRAPublic() {
-        return shopSRAPublic;
+    public String getSraPublic() {
+        return sraPublic;
     }
 
-    public void setShopSRAPublic(String shopSRAPublic) {
-        this.shopSRAPublic = shopSRAPublic;
+    public void setSraPublic(String sraPublic) {
+        this.sraPublic = sraPublic;
     }
 
-    public String getShopKeySalt() {
-        return shopKeySalt;
+    public String getKeySalt() {
+        return keySalt;
     }
 
-    public void setShopKeySalt(String shopKeySalt) {
-        this.shopKeySalt = shopKeySalt;
+    public void setKeySalt(String keySalt) {
+        this.keySalt = keySalt;
     }
 
 }
